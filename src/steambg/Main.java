@@ -20,6 +20,12 @@ public class Main {
      */
     static boolean isSteamRunning=false;
     
+    /* These will be used my more than just the loader function, so I decided 
+       that I should probably move it out here so I only have to deal with it once.
+    */
+    static File bgInput = new File("c:\\SteamCustomBackGround\\SteamBG.png");
+    static File bgOutput = new File("C:\\Program Files (x86)\\Steam\\tenfoot\\resource\\images\\mainmenu_bg_2.png");
+    
 
     /* I should Probably put the interface elements somewhere else, but for now
      * they are right here.
@@ -44,9 +50,6 @@ public class Main {
         
     }
 
-/* I tried to make this work and failed. I'll come back to it in the furture, bot for now, I'm focusing
-* on other aspects
-*/
     public static void checker (Boolean sRunning) throws IOException, InterruptedException {
 
             String line;
@@ -80,10 +83,9 @@ public class Main {
         BufferedImage bgImg = null;
             try {
                 // load image into java
-                bgImg = ImageIO.read(new File("c:\\SteamCustomBackGround\\SteamBG.png"));
+                ImageIO.read(bgInput);
                 // output image as the Background image for big picture mode.
-                File outputfile = new File("C:\\Program Files (x86)\\Steam\\tenfoot\\resource\\images\\mainmenu_bg_2.png");
-                ImageIO.write(bgImg, "png", outputfile);
+                ImageIO.write(bgImg, "png", bgOutput);
             }
             catch (IOException e) {
             }
